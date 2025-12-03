@@ -1,0 +1,62 @@
+version: '3.8'
+services:
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: monitor
+      MYSQL_USER: monitor
+      MYSQL_PASSWORD: monitorpass
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./mysql-init:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    depends_on:
+      - pushgateway
+
+  pushgateway:
+    image: prom/pushgateway:latest
+    ports:
+      - "9091:9091"
+
+  grafana:
+    image: grafana/grafana:latest
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus
+
+  app:
+    build:
+      context: ./app
+    volumes:
+      - ./app:/app
+    ports:
+      - "5000:5000"
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_PORT=3306
+      - MYSQL_USER=monitor
+      - MYSQL_PASSWORD=monitorpass
+      - MYSQL_DB=monitor
+      - PROMETHEUS_URL=http://prometheus:9090
+      - PUSHGATEWAY_URL=http://pushgateway:9091
+    depends_on:
+      - mysql
+      - pushgateway
+      - prometheus
+
+volumes:
+  mysql-data:
