@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>URL Monitor - Frontend</title>
+  <style>
+    body{font-family: Arial; margin: 24px;}
+    table{border-collapse: collapse; width: 100%;}
+    th, td{border: 1px solid #ddd; padding: 8px;}
+    th{background:#f4f4f4;}
+    .up{color:green;font-weight:bold;}
+    .down{color:red;font-weight:bold;}
+  </style>
+</head>
+<body>
+  <h1>URL Monitor - Latest</h1>
+  <button id="run">Run Checks Now</button>
+  <p id="status"></p>
+  <table id="tbl">
+    <thead><tr><th>Target</th><th>Up</th><th>Latency (ms)</th></tr></thead>
+    <tbody></tbody>
+  </table>
+<script>
+async function fetchLatest(){
+  const res = await fetch('/metrics/latest');
+  const data = await res.json();
+  const tbody = document.querySelector('#tbl tbody');
+  tbody.innerHTML = '';
+  Object.keys(data).sort().forEach(t=>{
+    const row = document.createElement('tr');
+    row.innerHTML = `<td>${t}</td>
+      <td class="${data[t].up===1 ? 'up' : 'down'}">${data[t].up===1?'UP':'DOWN'}</td>
+      <td>${data[t].latency_ms ?? '-'}</td>`;
+    tbody.appendChild(row);
+  });
+}
+document.getElementById('run').addEventListener('click', async ()=>{
+  document.getElementById('status').innerText = 'Running checks...';
+  await fetch('/run-once', {method: 'POST'});
+  document.getElementById('status').innerText = 'Done. Refreshed.';
+  await fetchLatest();
+});
+window.onload = fetchLatest;
+</script>
+</body>
+</html>
