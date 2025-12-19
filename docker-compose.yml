@@ -1,7 +1,7 @@
-version: '3.8'
 services:
   mysql:
     image: mysql:5.7
+    container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: monitor
@@ -13,8 +13,15 @@ services:
     ports:
       - "3306:3306"
 
+  pushgateway:
+    image: prom/pushgateway:latest
+    container_name: pushgateway
+    ports:
+      - "9091:9091"
+
   prometheus:
     image: prom/prometheus:latest
+    container_name: prometheus
     volumes:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
     command:
@@ -24,39 +31,25 @@ services:
     depends_on:
       - pushgateway
 
-  pushgateway:
-    image: prom/pushgateway:latest
-    ports:
-      - "9091:9091"
-
-  grafana:
-    image: grafana/grafana:latest
-    environment:
-      - GF_SECURITY_ADMIN_PASSWORD=admin
-    ports:
-      - "3000:3000"
-    depends_on:
-      - prometheus
-
   app:
+    container_name: url-monitor-app
     build:
-      context: ./app
-    volumes:
-      - ./app:/app
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_DB: monitor
+      PROMETHEUS_URL: http://prometheus:9090
+      PUSHGATEWAY_URL: http://pushgateway:9091
     ports:
       - "5000:5000"
-    environment:
-      - MYSQL_HOST=mysql
-      - MYSQL_PORT=3306
-      - MYSQL_USER=monitor
-      - MYSQL_PASSWORD=monitorpass
-      - MYSQL_DB=monitor
-      - PROMETHEUS_URL=http://prometheus:9090
-      - PUSHGATEWAY_URL=http://pushgateway:9091
     depends_on:
       - mysql
-      - pushgateway
       - prometheus
+      - pushgateway
 
 volumes:
   mysql-data:

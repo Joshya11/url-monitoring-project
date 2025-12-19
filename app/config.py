@@ -8,3 +8,5 @@ MYSQL_DB = os.getenv('MYSQL_DB', 'monitor')
 
 PUSHGATEWAY_URL = os.getenv('PUSHGATEWAY_URL', 'http://localhost:9091')
 PROMETHEUS_URL = os.getenv('PROMETHEUS_URL', 'http://localhost:9090')
+
+DEV_MODE = os.getenv("DEV_MODE", "true").lower() == "true"
