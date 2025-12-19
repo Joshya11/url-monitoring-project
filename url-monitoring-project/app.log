@@ -1,0 +1,77 @@
+2025-12-17 12:25:22,220 [INFO] url_monitor: Starting URL monitoring app (DEV_MODE=True)
+2025-12-17 12:25:23,625 [INFO] url_monitor: Starting URL monitoring app (DEV_MODE=True)
+2025-12-17 12:26:42,036 [ERROR] url_monitor: Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "C:\Users\sekha\anaconda3\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sekha\anaconda3\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sekha\anaconda3\Lib\site-packages\flask\app.py", line 270, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sekha\anaconda3\Lib\site-packages\flask\app.py", line 318, in send_static_file
+    return send_from_directory(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sekha\anaconda3\Lib\site-packages\flask\helpers.py", line 552, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sekha\anaconda3\Lib\site-packages\werkzeug\utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-12-17 12:26:44,153 [INFO] url_monitor: Starting URL monitoring app (DEV_MODE=True)
+2025-12-17 12:27:04,317 [INFO] url_monitor: DEV_MODE: returning placeholder metrics
+2025-12-17 12:27:04,418 [ERROR] url_monitor: Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "C:\Users\sekha\anaconda3\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sekha\anaconda3\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sekha\anaconda3\Lib\site-packages\flask\app.py", line 270, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sekha\anaconda3\Lib\site-packages\flask\app.py", line 318, in send_static_file
+    return send_from_directory(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sekha\anaconda3\Lib\site-packages\flask\helpers.py", line 552, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sekha\anaconda3\Lib\site-packages\werkzeug\utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-12-17 12:27:07,147 [INFO] url_monitor: DEV_MODE enabled: using sample targets
+2025-12-17 12:27:07,247 [INFO] url_monitor: Checked http://example.com (attempt 1): status=200 latency=93ms
+2025-12-17 12:27:07,297 [INFO] url_monitor: Checked http://python.org (attempt 1): status=200 latency=143ms
+2025-12-17 12:27:07,398 [INFO] url_monitor: Checked http://docker.com (attempt 1): status=200 latency=240ms
+2025-12-17 12:27:07,418 [INFO] url_monitor: Checked http://apple.com (attempt 1): status=200 latency=262ms
+2025-12-17 12:27:07,440 [INFO] url_monitor: Checked http://github.com (attempt 1): status=200 latency=287ms
+2025-12-17 12:27:07,461 [INFO] url_monitor: Checked http://bing.com (attempt 1): status=200 latency=304ms
+2025-12-17 12:27:07,463 [INFO] url_monitor: Checked http://wikipedia.org (attempt 1): status=403 latency=308ms
+2025-12-17 12:27:07,520 [INFO] url_monitor: Checked http://cnn.com (attempt 1): status=200 latency=364ms
+2025-12-17 12:27:07,528 [INFO] url_monitor: Checked http://zoom.us (attempt 1): status=200 latency=370ms
+2025-12-17 12:27:07,576 [INFO] url_monitor: Checked http://microsoft.com (attempt 1): status=200 latency=422ms
+2025-12-17 12:27:07,898 [INFO] url_monitor: Checked http://slack.com (attempt 1): status=200 latency=741ms
+2025-12-17 12:27:07,914 [INFO] url_monitor: Checked http://reddit.com (attempt 1): status=200 latency=759ms
+2025-12-17 12:27:07,926 [INFO] url_monitor: Checked http://stackoverflow.com (attempt 1): status=200 latency=772ms
+2025-12-17 12:27:07,999 [INFO] url_monitor: Checked http://google.com (attempt 1): status=200 latency=850ms
+2025-12-17 12:27:08,270 [INFO] url_monitor: Checked http://facebook.com (attempt 1): status=200 latency=1118ms
+2025-12-17 12:27:08,620 [INFO] url_monitor: Checked http://yahoo.com (attempt 1): status=429 latency=1463ms
+2025-12-17 12:27:08,925 [INFO] url_monitor: Checked http://amazon.com (attempt 1): status=503 latency=1774ms
+2025-12-17 12:27:09,226 [WARNING] url_monitor: Attempt 1 failed for http://127.0.0.1:8080: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000254B8AAF170>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+2025-12-17 12:27:09,229 [INFO] url_monitor: Sleeping 1.5s before retrying http://127.0.0.1:8080
+2025-12-17 12:27:11,271 [WARNING] url_monitor: Attempt 1 failed for http://localhost:80: HTTPConnectionPool(host='localhost', port=80): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000254B8AAED20>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+2025-12-17 12:27:11,273 [INFO] url_monitor: Sleeping 1.5s before retrying http://localhost:80
+2025-12-17 12:27:12,032 [INFO] url_monitor: Checked http://netflix.com (attempt 1): status=200 latency=4876ms
+2025-12-17 12:27:12,788 [WARNING] url_monitor: Attempt 2 failed for http://127.0.0.1:8080: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000254B8A92AE0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+2025-12-17 12:27:12,790 [INFO] url_monitor: Sleeping 2.2s before retrying http://127.0.0.1:8080
+2025-12-17 12:27:16,882 [WARNING] url_monitor: Attempt 2 failed for http://localhost:80: HTTPConnectionPool(host='localhost', port=80): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000254B8AACF20>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+2025-12-17 12:27:16,883 [INFO] url_monitor: Sleeping 2.2s before retrying http://localhost:80
+2025-12-17 12:27:17,115 [WARNING] url_monitor: Attempt 3 failed for http://127.0.0.1:8080: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000254B8A92B40>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+2025-12-17 12:27:17,116 [ERROR] url_monitor: All attempts failed for http://127.0.0.1:8080
+2025-12-17 12:27:23,235 [WARNING] url_monitor: Attempt 3 failed for http://localhost:80: HTTPConnectionPool(host='localhost', port=80): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000254B8A903E0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+2025-12-17 12:27:23,236 [ERROR] url_monitor: All attempts failed for http://localhost:80
+2025-12-17 12:27:23,240 [INFO] url_monitor: DEV_MODE: skipping push to Pushgateway
+2025-12-17 12:27:23,246 [INFO] url_monitor: DEV_MODE: returning placeholder metrics
